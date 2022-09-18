@@ -12,7 +12,7 @@ function App() {
 	return (
 		<div className="App">
 			<h1>hangman</h1>
-			<div>{displayLetters()}</div>
+			<div className="letters-container">{displayLetters()}</div>
 		</div>
 	);
 }
