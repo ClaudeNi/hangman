@@ -11,7 +11,7 @@ function App() {
 	};
 	return (
 		<div className="App">
-			<h1>hangman</h1>
+			<h1 className="title">Hangman</h1>
 			<div className="letters-container">{displayLetters()}</div>
 		</div>
 	);
