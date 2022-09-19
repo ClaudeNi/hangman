@@ -1,18 +1,22 @@
 import Letter from "./components/Letter/Letter";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+	const [word, setWord] = useState("");
 	let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	const displayLetters = () => {
 		return letters.split("").map((char, i) => {
-			return <Letter letter={char} />;
+			return <Letter letter={char} key={i} />;
 		});
 	};
 	return (
 		<div className="App">
 			<h1 className="title">Hangman</h1>
+			{word}
 			<div className="letters-container">{displayLetters()}</div>
+			<button onClick={() => setWord("word")}>set word</button>
 		</div>
 	);
 }
