@@ -7,4 +7,10 @@
     align-items: center;
     cursor: pointer;
     background-color: #888;
+    transition: all 0.2s ease-in-out;
+}
+
+.letter:hover {
+    background-color: #333;
+    color: #fff;
 }
