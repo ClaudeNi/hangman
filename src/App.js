@@ -62,7 +62,9 @@ function App() {
 			<h1 className="title">Hangman</h1>
 			{displayLines()}
 			<div className="letters-container">{displayLetters()}</div>
-			<button onClick={() => setWord("Word")}>set word</button>
+			<button onClick={() => setWord("Word".toUpperCase())}>
+				set word
+			</button>
 		</div>
 	);
 }
