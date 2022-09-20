@@ -29,13 +29,17 @@ function App() {
 		});
 	};
 
-	const letterClickHandle = (guess) => {
+	const letterClickHandle = (guess, setAnswer) => {
 		if (!guesses.includes(guess)) {
 			let newGuesses = guesses;
-			console.log(newGuesses);
 			newGuesses.push(guess);
 			setGuesses(newGuesses);
 			buildDisplay();
+		}
+		if (word.split("").includes(guess)) {
+			setAnswer("correct");
+		} else {
+			setAnswer("incorrect");
 		}
 	};
 
