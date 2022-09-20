@@ -14,3 +14,11 @@
     background-color: #333;
     color: #fff;
 }
+
+.correct {
+    background-color: #55D42C;
+}
+
+.incorrect {
+    background-color: #DE2F2F;
+}
