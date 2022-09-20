@@ -1,12 +1,33 @@
 import Letter from "./components/Letter/Letter";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 	const [word, setWord] = useState("");
 	const [guesses, setGuesses] = useState([]);
+	const [display, setDisplay] = useState("");
 
 	let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+	useEffect(() => {
+		if (word) {
+			buildDisplay();
+		}
+		// eslint-disable-next-line
+	}, [word]);
+
+	const buildDisplay = () => {
+		let newDisplay = "";
+		// eslint-disable-next-line
+		word.split("").map((char, i) => {
+			if (guesses.includes(char.toUpperCase())) {
+				newDisplay += char.toUpperCase();
+			} else {
+				newDisplay += "_";
+			}
+			setDisplay(newDisplay);
+		});
+	};
 
 	const letterClickHandle = (guess) => {
 		if (!guesses.includes(guess)) {
@@ -14,7 +35,7 @@ function App() {
 			console.log(newGuesses);
 			newGuesses.push(guess);
 			setGuesses(newGuesses);
-			setWord(word);
+			buildDisplay();
 		}
 	};
 
@@ -27,18 +48,11 @@ function App() {
 	};
 
 	const displayLines = () => {
-		return word.split("").map((char, i) => {
-			if (guesses.includes(char.toUpperCase())) {
-				return <span key={i}>{char}</span>;
-			}
-			return (
-				<span char={char} key={i}>
-					{" "}
-					_{" "}
-				</span>
-			);
+		return display.split("").map((char, i) => {
+			return <span key={i}> {char} </span>;
 		});
 	};
+
 	return (
 		<div className="App">
 			<h1 className="title">Hangman</h1>
