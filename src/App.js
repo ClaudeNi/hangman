@@ -22,6 +22,8 @@ function App() {
 		word.split("").map((char, i) => {
 			if (guesses.includes(char.toUpperCase())) {
 				newDisplay += char.toUpperCase();
+			} else if (char == " ") {
+				newDisplay += " ";
 			} else {
 				newDisplay += "_";
 			}
@@ -53,6 +55,9 @@ function App() {
 
 	const displayLines = () => {
 		return display.split("").map((char, i) => {
+			if (char == " ") {
+				return <span key={i}>{" - "}</span>;
+			}
 			return <span key={i}> {char} </span>;
 		});
 	};
@@ -62,7 +67,7 @@ function App() {
 			<h1 className="title">Hangman</h1>
 			{displayLines()}
 			<div className="letters-container">{displayLetters()}</div>
-			<button onClick={() => setWord("Word".toUpperCase())}>
+			<button onClick={() => setWord("two words".toUpperCase())}>
 				set word
 			</button>
 		</div>
