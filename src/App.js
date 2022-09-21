@@ -25,8 +25,8 @@ function App() {
 			} else {
 				newDisplay += "_";
 			}
-			setDisplay(newDisplay);
 		});
+		setDisplay(newDisplay);
 	};
 
 	const letterClickHandle = (guess, setAnswer) => {
