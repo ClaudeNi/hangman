@@ -6,7 +6,7 @@ function App() {
 	const [word, setWord] = useState("");
 	const [guesses, setGuesses] = useState([]);
 	const [display, setDisplay] = useState("");
-	const [mistakes, setMistakes] = useState(0);
+	const [mistakes, setMistakes] = useState(1);
 
 	let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -23,25 +23,28 @@ function App() {
 		word.split("").map((char, i) => {
 			if (guesses.includes(char.toUpperCase())) {
 				newDisplay += char.toUpperCase();
-			} else if (char == " ") {
+			} else if (char === " ") {
 				newDisplay += " ";
 			} else {
 				newDisplay += "_";
 			}
 		});
+		console.log(mistakes);
 		setDisplay(newDisplay);
 	};
 
 	const letterClickHandle = (guess, setAnswer) => {
-		if (!guesses.includes(guess)) {
+		if (!guesses.includes(guess) && mistakes < 8) {
 			let newGuesses = guesses;
 			newGuesses.push(guess);
 			setGuesses(newGuesses);
 			buildDisplay();
 		}
-		if (word.split("").includes(guess)) {
+		if (word.split("").includes(guess) && mistakes < 8) {
 			setAnswer("correct");
-		} else {
+		} else if (mistakes < 8) {
+			let newMistakes = mistakes + 1;
+			setMistakes(newMistakes);
 			setAnswer("incorrect");
 		}
 	};
@@ -56,7 +59,7 @@ function App() {
 
 	const displayLines = () => {
 		return display.split("").map((char, i) => {
-			if (char == " ") {
+			if (char === " ") {
 				return <span key={i}>{" - "}</span>;
 			}
 			return <span key={i}> {char} </span>;
