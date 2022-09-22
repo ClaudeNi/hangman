@@ -19,8 +19,7 @@ function App() {
 
 	const buildDisplay = () => {
 		let newDisplay = "";
-		// eslint-disable-next-line
-		word.split("").map((char, i) => {
+		word.split("").forEach((char, i) => {
 			if (guesses.includes(char.toUpperCase())) {
 				newDisplay += char.toUpperCase();
 			} else if (char === " ") {
