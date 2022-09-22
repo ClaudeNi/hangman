@@ -29,7 +29,6 @@ function App() {
 				newDisplay += "_";
 			}
 		});
-		console.log(mistakes);
 		setDisplay(newDisplay);
 	};
 
