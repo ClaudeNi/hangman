@@ -8,6 +8,7 @@ function App() {
 	const [display, setDisplay] = useState("");
 	const [corrects, setCorrects] = useState(1);
 	const [mistakes, setMistakes] = useState(1);
+	const [gameEnd, setGameEnd] = useState(false);
 
 	let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -45,6 +46,17 @@ function App() {
 			let newMistakes = mistakes + 1;
 			setMistakes(newMistakes);
 			setAnswer("incorrect");
+		}
+		checkGame();
+	};
+
+	const checkGame = () => {
+		let spaces = (word.match(/ /g) || []).length;
+		if (mistakes === 7) {
+			setGameEnd(true);
+		}
+		if (corrects === word.length - spaces) {
+			setGameEnd(true);
 		}
 	};
 
