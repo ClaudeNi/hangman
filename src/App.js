@@ -6,6 +6,7 @@ function App() {
 	const [word, setWord] = useState("");
 	const [guesses, setGuesses] = useState([]);
 	const [display, setDisplay] = useState("");
+	const [corrects, setCorrects] = useState(1);
 	const [mistakes, setMistakes] = useState(1);
 
 	let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
