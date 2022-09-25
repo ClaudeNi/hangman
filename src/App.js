@@ -9,6 +9,7 @@ function App() {
 	const [corrects, setCorrects] = useState(1);
 	const [mistakes, setMistakes] = useState(1);
 	const [gameEnd, setGameEnd] = useState(false);
+	const [text, setText] = useState("");
 
 	let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -85,6 +86,7 @@ function App() {
 			<button onClick={() => setWord("two words".toUpperCase())}>
 				set word
 			</button>
+			<div>{text}</div>
 		</div>
 	);
 }
