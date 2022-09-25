@@ -55,9 +55,11 @@ function App() {
 		let spaces = (word.match(/ /g) || []).length;
 		if (mistakes === 7) {
 			setGameEnd(true);
+			setText("You failed...");
 		}
 		if (corrects === word.length - spaces) {
 			setGameEnd(true);
+			setText("You won!!!");
 		}
 	};
 
